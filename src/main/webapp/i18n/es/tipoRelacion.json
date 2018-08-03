@@ -1,0 +1,22 @@
+
+{
+    "techfileApp": {
+        "tipoRelacion" : {
+            "home": {
+                "title": "Tipo Relacions",
+                "createLabel": "Crear nuevo Tipo Relacion",
+                "createOrEditLabel": "Crear o editar Tipo Relacion"
+            },
+            "created": "Un nuevo Tipo Relacion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo Relacion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo Relacion ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipo Relacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Relacion"
+            },
+            "descripcion": "Descripcion"
+        }
+    }
+}

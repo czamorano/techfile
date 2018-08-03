@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "etiologia" : {
+            "home": {
+                "title": "Etiologias",
+                "createLabel": "Crear nuevo Etiologia",
+                "createOrEditLabel": "Crear o editar Etiologia"
+            },
+            "created": "Un nuevo Etiologia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Etiologia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Etiologia ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Etiologia {{ id }}?"
+            },
+            "detail": {
+                "title": "Etiologia"
+            },
+            "descripcion": "Descripcion",
+            "pensionista": "Pensionista"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="conviviente">
+            <h2><span jhiTranslate="techfileApp.conviviente.detail.title">Conviviente</span> {{conviviente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.conviviente.orden">Orden</span></dt>
+                <dd>
+                    <span>{{conviviente.orden}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.conviviente.pensionista">Pensionista</span></dt>
+                <dd>
+                    <div *ngIf="conviviente.pensionista">
+                        <a [routerLink]="['/pensionista-my-suffix', conviviente.pensionista?.id, 'view']">{{conviviente.pensionista?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/conviviente-my-suffix', conviviente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

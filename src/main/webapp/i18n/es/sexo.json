@@ -1,0 +1,9 @@
+{
+    "techfileApp": {
+        "Sexo" : {
+            "null": "",
+            "HOMBRE": "HOMBRE",
+            "MUJER": "MUJER"
+        }
+    }
+}

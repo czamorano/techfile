@@ -1,0 +1,30 @@
+{
+    "name": "Perceptor",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "persona",
+            "otherEntityName": "persona",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "perceptor"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pensionista",
+            "otherEntityName": "pensionista",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "perceptor"
+        }
+    ],
+    "changelogDate": "20180803034844",
+    "entityTableName": "perceptor",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,157 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-persona-my-suffix-heading" jhiTranslate="techfileApp.persona.home.createOrEditLabel">Create or edit a Persona</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!persona.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="persona.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="persona.nombre" required/>
+                    <div [hidden]="!(editForm.controls.nombre?.dirty && editForm.controls.nombre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombre?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.apellidos" for="field_apellidos">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                        [(ngModel)]="persona.apellidos" required/>
+                    <div [hidden]="!(editForm.controls.apellidos?.dirty && editForm.controls.apellidos?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apellidos?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.tipoIdentificacion" for="field_tipoIdentificacion">Tipo Identificacion</label>
+                    <select class="form-control" name="tipoIdentificacion" [(ngModel)]="persona.tipoIdentificacion" id="field_tipoIdentificacion"  required>
+                        <option value="NIF">{{'techfileApp.TipoIdentificacion.NIF' | translate}}</option>
+                        <option value="NIE">{{'techfileApp.TipoIdentificacion.NIE' | translate}}</option>
+                        <option value="CODIGO_FISCAL">{{'techfileApp.TipoIdentificacion.CODIGO_FISCAL' | translate}}</option>
+                        <option value="OTRO">{{'techfileApp.TipoIdentificacion.OTRO' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.tipoIdentificacion?.dirty && editForm.controls.tipoIdentificacion?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipoIdentificacion?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.documentoIdentificacion" for="field_documentoIdentificacion">Documento Identificacion</label>
+                    <input type="text" class="form-control" name="documentoIdentificacion" id="field_documentoIdentificacion"
+                        [(ngModel)]="persona.documentoIdentificacion" required/>
+                    <div [hidden]="!(editForm.controls.documentoIdentificacion?.dirty && editForm.controls.documentoIdentificacion?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.documentoIdentificacion?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.digitosControl" for="field_digitosControl">Digitos Control</label>
+                    <input type="number" class="form-control" name="digitosControl" id="field_digitosControl"
+                        [(ngModel)]="persona.digitosControl" required/>
+                    <div [hidden]="!(editForm.controls.digitosControl?.dirty && editForm.controls.digitosControl?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.digitosControl?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.digitosControl?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.tipoPension" for="field_tipoPension">Tipo Pension</label>
+                    <select class="form-control" name="tipoPension" [(ngModel)]="persona.tipoPension" id="field_tipoPension"  required>
+                        <option value="JUBILACION">{{'techfileApp.TipoPension.JUBILACION' | translate}}</option>
+                        <option value="INVALIDEZ">{{'techfileApp.TipoPension.INVALIDEZ' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.tipoPension?.dirty && editForm.controls.tipoPension?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tipoPension?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.fechaNacimiento" for="field_fechaNacimiento">Fecha Nacimiento</label>
+                    <div class="input-group">
+                        <input id="field_fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" ngbDatepicker  #fechaNacimientoDp="ngbDatepicker" [(ngModel)]="persona.fechaNacimiento"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaNacimientoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.sexo" for="field_sexo">Sexo</label>
+                    <select class="form-control" name="sexo" [(ngModel)]="persona.sexo" id="field_sexo" >
+                        <option value="HOMBRE">{{'techfileApp.Sexo.HOMBRE' | translate}}</option>
+                        <option value="MUJER">{{'techfileApp.Sexo.MUJER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.estadoCivil" for="field_estadoCivil">Estado Civil</label>
+                    <select class="form-control" name="estadoCivil" [(ngModel)]="persona.estadoCivil" id="field_estadoCivil" >
+                        <option value="CASADO">{{'techfileApp.EstadoCivil.CASADO' | translate}}</option>
+                        <option value="DIVORCIADO">{{'techfileApp.EstadoCivil.DIVORCIADO' | translate}}</option>
+                        <option value="SEPARADO">{{'techfileApp.EstadoCivil.SEPARADO' | translate}}</option>
+                        <option value="SOLTERO">{{'techfileApp.EstadoCivil.SOLTERO' | translate}}</option>
+                        <option value="VIUDO">{{'techfileApp.EstadoCivil.VIUDO' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.domicilio" for="field_domicilio">Domicilio</label>
+                    <input type="text" class="form-control" name="domicilio" id="field_domicilio"
+                        [(ngModel)]="persona.domicilio" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.codigoPostal" for="field_codigoPostal">Codigo Postal</label>
+                    <input type="number" class="form-control" name="codigoPostal" id="field_codigoPostal"
+                        [(ngModel)]="persona.codigoPostal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.localidad" for="field_localidad">Localidad</label>
+                    <input type="text" class="form-control" name="localidad" id="field_localidad"
+                        [(ngModel)]="persona.localidad" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.municipio" for="field_municipio">Municipio</label>
+                    <input type="number" class="form-control" name="municipio" id="field_municipio"
+                        [(ngModel)]="persona.municipio" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.nacionalidad" for="field_nacionalidad">Nacionalidad</label>
+                    <input type="number" class="form-control" name="nacionalidad" id="field_nacionalidad"
+                        [(ngModel)]="persona.nacionalidad" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.persona.numeroSS" for="field_numeroSS">Numero SS</label>
+                    <input type="number" class="form-control" name="numeroSS" id="field_numeroSS"
+                        [(ngModel)]="persona.numeroSS" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mes">
+            <h2><span jhiTranslate="techfileApp.mes.detail.title">Mes</span> {{mes.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.mes.agno">Agno</span></dt>
+                <dd>
+                    <span>{{mes.agno}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.mes.mes">Mes</span></dt>
+                <dd>
+                    <span>{{mes.mes}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.mes.fichero">Fichero</span></dt>
+                <dd>
+                    <div *ngIf="mes.fichero">
+                        <a [routerLink]="['/fichero', mes.fichero?.id, 'view']">{{mes.fichero?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mes', mes.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

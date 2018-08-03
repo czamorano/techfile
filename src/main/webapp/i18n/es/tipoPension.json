@@ -1,0 +1,9 @@
+{
+    "techfileApp": {
+        "TipoPension" : {
+            "null": "",
+            "JUBILACION": "JUBILACION",
+            "INVALIDEZ": "INVALIDEZ"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "autonomia" : {
+            "home": {
+                "title": "Autonomias",
+                "createLabel": "Crear nuevo Autonomia",
+                "createOrEditLabel": "Crear o editar Autonomia"
+            },
+            "created": "Un nuevo Autonomia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Autonomia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Autonomia ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Autonomia {{ id }}?"
+            },
+            "detail": {
+                "title": "Autonomia"
+            },
+            "nombre": "Nombre",
+            "provincia": "Provincia"
+        }
+    }
+}

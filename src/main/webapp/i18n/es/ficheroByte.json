@@ -1,0 +1,22 @@
+
+{
+    "techfileApp": {
+        "ficheroByte" : {
+            "home": {
+                "title": "Fichero Bytes",
+                "createLabel": "Crear nuevo Fichero Byte",
+                "createOrEditLabel": "Crear o editar Fichero Byte"
+            },
+            "created": "Un nuevo Fichero Byte ha sido creado con el identificador {{ param }}",
+            "updated": "Un Fichero Byte ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Fichero Byte ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Fichero Byte {{ id }}?"
+            },
+            "detail": {
+                "title": "Fichero Byte"
+            },
+            "fileBytes": "File Bytes"
+        }
+    }
+}

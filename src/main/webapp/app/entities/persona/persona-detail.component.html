@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="persona">
+            <h2><span jhiTranslate="techfileApp.persona.detail.title">Persona</span> {{persona.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.persona.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{persona.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.apellidos">Apellidos</span></dt>
+                <dd>
+                    <span>{{persona.apellidos}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.tipoIdentificacion">Tipo Identificacion</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'techfileApp.TipoIdentificacion.' + persona.tipoIdentificacion}}">{{persona.tipoIdentificacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.documentoIdentificacion">Documento Identificacion</span></dt>
+                <dd>
+                    <span>{{persona.documentoIdentificacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.digitosControl">Digitos Control</span></dt>
+                <dd>
+                    <span>{{persona.digitosControl}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.tipoPension">Tipo Pension</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'techfileApp.TipoPension.' + persona.tipoPension}}">{{persona.tipoPension}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.fechaNacimiento">Fecha Nacimiento</span></dt>
+                <dd>
+                    <span>{{persona.fechaNacimiento}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.sexo">Sexo</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'techfileApp.Sexo.' + persona.sexo}}">{{persona.sexo}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.estadoCivil">Estado Civil</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'techfileApp.EstadoCivil.' + persona.estadoCivil}}">{{persona.estadoCivil}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.domicilio">Domicilio</span></dt>
+                <dd>
+                    <span>{{persona.domicilio}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.codigoPostal">Codigo Postal</span></dt>
+                <dd>
+                    <span>{{persona.codigoPostal}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.localidad">Localidad</span></dt>
+                <dd>
+                    <span>{{persona.localidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.municipio">Municipio</span></dt>
+                <dd>
+                    <span>{{persona.municipio}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.nacionalidad">Nacionalidad</span></dt>
+                <dd>
+                    <span>{{persona.nacionalidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.persona.numeroSS">Numero SS</span></dt>
+                <dd>
+                    <span>{{persona.numeroSS}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/persona', persona.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{
+    "name": "Etiologia",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "pensionista",
+            "otherEntityName": "pensionista",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "etiologia"
+        }
+    ],
+    "changelogDate": "20180803034849",
+    "entityTableName": "etiologia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

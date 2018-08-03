@@ -41,6 +41,32 @@ public class CacheConfiguration {
             cm.createCache(es.imserso.techfile.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Autonomia.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Autonomia.class.getName() + ".provincias", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Provincia.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.FicheroByte.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Mes.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.PensionConcurrente.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.TipoRelacion.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.RegimenProcedencia.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Persona.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Pensionista.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Pensionista.class.getName() + ".convivientes", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Pensionista.class.getName() + ".discapacidads", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Pensionista.class.getName() + ".diagnosticos", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Pensionista.class.getName() + ".etiologias", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Conviviente.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Perceptor.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Fichero.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Fichero.class.getName() + ".pensionistas", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Fichero.class.getName() + ".mes", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Discapacidad.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Discapacidad.class.getName() + ".pensionistas", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Diagnostico.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Diagnostico.class.getName() + ".pensionistas", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Etiologia.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Etiologia.class.getName() + ".pensionistas", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Usuario.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

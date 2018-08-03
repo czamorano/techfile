@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fichero">
+            <h2><span jhiTranslate="techfileApp.fichero.detail.title">Fichero</span> {{fichero.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.fichero.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{fichero.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.tamagno">Tamagno</span></dt>
+                <dd>
+                    <span>{{fichero.tamagno}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.fechaCreacionOrigen">Fecha Creacion Origen</span></dt>
+                <dd>
+                    <span>{{fichero.fechaCreacionOrigen}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.fechaAltaAplicacion">Fecha Alta Aplicacion</span></dt>
+                <dd>
+                    <span>{{fichero.fechaAltaAplicacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.encoding">Encoding</span></dt>
+                <dd>
+                    <span>{{fichero.encoding}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.lineas">Lineas</span></dt>
+                <dd>
+                    <span>{{fichero.lineas}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.ficheroByte">Fichero Byte</span></dt>
+                <dd>
+                    <div *ngIf="fichero.ficheroByte">
+                        <a [routerLink]="['/fichero-byte-my-suffix', fichero.ficheroByte?.id, 'view']">{{fichero.ficheroByte?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.autonomia">Autonomia</span></dt>
+                <dd>
+                    <div *ngIf="fichero.autonomia">
+                        <a [routerLink]="['/autonomia-my-suffix', fichero.autonomia?.id, 'view']">{{fichero.autonomia?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.fichero.provincia">Provincia</span></dt>
+                <dd>
+                    <div *ngIf="fichero.provincia">
+                        <a [routerLink]="['/provincia-my-suffix', fichero.provincia?.id, 'view']">{{fichero.provincia?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fichero-my-suffix', fichero.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

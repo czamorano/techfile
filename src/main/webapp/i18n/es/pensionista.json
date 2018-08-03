@@ -1,0 +1,49 @@
+
+{
+    "techfileApp": {
+        "pensionista" : {
+            "home": {
+                "title": "Pensionistas",
+                "createLabel": "Crear nuevo Pensionista",
+                "createOrEditLabel": "Crear o editar Pensionista"
+            },
+            "created": "Un nuevo Pensionista ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pensionista ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pensionista ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pensionista {{ id }}?"
+            },
+            "detail": {
+                "title": "Pensionista"
+            },
+            "situacionPension": "Situacion Pension",
+            "ingresosTotales": "Ingresos Totales",
+            "trabaja": "Trabaja",
+            "totalConvivientes": "Total Convivientes",
+            "ingresosAnualesConvivientes": "Ingresos Anuales Convivientes",
+            "gradoMinusvalia": "Grado Minusvalia",
+            "porcentajeDiscapacidad": "Porcentaje Discapacidad",
+            "baremoFactoresSocialesComplementarios": "Baremo Factores Sociales Complementarios",
+            "baremoNecesidadTerceraPersona": "Baremo Necesidad Tercera Persona",
+            "fechaSolicitudPension": "Fecha Solicitud Pension",
+            "fechaResolucionPension": "Fecha Resolucion Pension",
+            "fechaAltaNomina": "Fecha Alta Nomina",
+            "importeMensualPension": "Importe Mensual Pension",
+            "importeMensualComplementoTerceraPersona": "Importe Mensual Complemento Tercera Persona",
+            "formaCobro": "Forma Cobro",
+            "entidadBancaria": "Entidad Bancaria",
+            "cuentaBancaria": "Cuenta Bancaria",
+            "numeroCuenta": "Numero Cuenta",
+            "persona": "Persona",
+            "perceptor": "Perceptor",
+            "conviviente": "Conviviente",
+            "regimenProcedencia": "Regimen Procedencia",
+            "pensionConcurrente": "Pension Concurrente",
+            "tipoRelacion": "Tipo Relacion",
+            "discapacidad": "Discapacidad",
+            "diagnostico": "Diagnostico",
+            "etiologia": "Etiologia",
+            "fichero": "Fichero"
+        }
+    }
+}

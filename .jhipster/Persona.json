@@ -1,0 +1,97 @@
+{
+    "name": "Persona",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apellidos",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoIdentificacion",
+            "fieldType": "TipoIdentificacion",
+            "fieldValues": "NIF,NIE,CODIGO_FISCAL,OTRO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "documentoIdentificacion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "digitosControl",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoPension",
+            "fieldType": "TipoPension",
+            "fieldValues": "JUBILACION,INVALIDEZ",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "Sexo",
+            "fieldValues": "HOMBRE,MUJER"
+        },
+        {
+            "fieldName": "estadoCivil",
+            "fieldType": "EstadoCivil",
+            "fieldValues": "CASADO,DIVORCIADO,SEPARADO,SOLTERO,VIUDO"
+        },
+        {
+            "fieldName": "domicilio",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codigoPostal",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "localidad",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "municipio",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nacionalidad",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "numeroSS",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180803034841",
+    "entityTableName": "persona",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

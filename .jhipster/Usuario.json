@@ -1,0 +1,27 @@
+{
+    "name": "Usuario",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "role",
+            "fieldType": "Role",
+            "fieldValues": "FIT_PLANIFICADOR,FIT_AUTONOMIA,FIT_GESTOR"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180803034850",
+    "entityTableName": "usuario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

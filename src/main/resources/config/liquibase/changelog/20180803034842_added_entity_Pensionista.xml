@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Pensionista.
+    -->
+    <changeSet id="20180803034842-1" author="jhipster">
+        <createTable tableName="pensionista">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="situacion_pension" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ingresos_totales" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="trabaja" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_convivientes" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ingresos_anuales_convivientes" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="grado_minusvalia" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="porcentaje_discapacidad" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="baremo_factores_sociales_complementarios" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="baremo_necesidad_tercera_persona" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fecha_solicitud_pension" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fecha_resolucion_pension" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fecha_alta_nomina" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="importe_mensual_pension" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="importe_mensual_complemento_tercera_persona" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="forma_cobro" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="entidad_bancaria" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cuenta_bancaria" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="numero_cuenta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="persona_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="perceptor_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
+            <column name="regimen_procedencia_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pension_concurrente_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tipo_relacion_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fichero_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+        <createTable tableName="pensionista_discapacidad">
+            <column name="discapacidads_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pensionistas_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="pensionistas_id, discapacidads_id" tableName="pensionista_discapacidad"/>
+        
+        <createTable tableName="pensionista_diagnostico">
+            <column name="diagnosticos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pensionistas_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="pensionistas_id, diagnosticos_id" tableName="pensionista_diagnostico"/>
+        
+        <createTable tableName="pensionista_etiologia">
+            <column name="etiologias_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pensionistas_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="pensionistas_id, etiologias_id" tableName="pensionista_etiologia"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

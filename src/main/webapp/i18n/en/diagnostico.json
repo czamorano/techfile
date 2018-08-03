@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "diagnostico" : {
+            "home": {
+                "title": "Diagnosticos",
+                "createLabel": "Create a new Diagnostico",
+                "createOrEditLabel": "Create or edit a Diagnostico"
+            },
+            "created": "A new Diagnostico is created with identifier {{ param }}",
+            "updated": "A Diagnostico is updated with identifier {{ param }}",
+            "deleted": "A Diagnostico is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Diagnostico {{ id }}?"
+            },
+            "detail": {
+                "title": "Diagnostico"
+            },
+            "descripcion": "Descripcion",
+            "pensionista": "Pensionista"
+        }
+    }
+}

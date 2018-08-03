@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-fichero-my-suffix-heading" jhiTranslate="techfileApp.fichero.home.createOrEditLabel">Create or edit a Fichero</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!fichero.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="fichero.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="fichero.nombre" required/>
+                    <div [hidden]="!(editForm.controls.nombre?.dirty && editForm.controls.nombre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombre?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.tamagno" for="field_tamagno">Tamagno</label>
+                    <input type="text" class="form-control" name="tamagno" id="field_tamagno"
+                        [(ngModel)]="fichero.tamagno" required/>
+                    <div [hidden]="!(editForm.controls.tamagno?.dirty && editForm.controls.tamagno?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tamagno?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.fechaCreacionOrigen" for="field_fechaCreacionOrigen">Fecha Creacion Origen</label>
+                    <div class="input-group">
+                        <input id="field_fechaCreacionOrigen" type="text" class="form-control" name="fechaCreacionOrigen" ngbDatepicker  #fechaCreacionOrigenDp="ngbDatepicker" [(ngModel)]="fichero.fechaCreacionOrigen"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaCreacionOrigenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.fechaAltaAplicacion" for="field_fechaAltaAplicacion">Fecha Alta Aplicacion</label>
+                    <div class="input-group">
+                        <input id="field_fechaAltaAplicacion" type="text" class="form-control" name="fechaAltaAplicacion" ngbDatepicker  #fechaAltaAplicacionDp="ngbDatepicker" [(ngModel)]="fichero.fechaAltaAplicacion"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaAltaAplicacionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.fechaAltaAplicacion?.dirty && editForm.controls.fechaAltaAplicacion?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fechaAltaAplicacion?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.encoding" for="field_encoding">Encoding</label>
+                    <input type="text" class="form-control" name="encoding" id="field_encoding"
+                        [(ngModel)]="fichero.encoding" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.lineas" for="field_lineas">Lineas</label>
+                    <input type="number" class="form-control" name="lineas" id="field_lineas"
+                        [(ngModel)]="fichero.lineas" required/>
+                    <div [hidden]="!(editForm.controls.lineas?.dirty && editForm.controls.lineas?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lineas?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lineas?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.ficheroByte" for="field_ficheroByte">Fichero Byte</label>
+                    <select class="form-control" id="field_ficheroByte" name="ficheroByte" [(ngModel)]="fichero.ficheroByte">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ficheroByteOption.id === fichero.ficheroByte?.id ? fichero.ficheroByte : ficheroByteOption" *ngFor="let ficheroByteOption of ficherobytes; trackBy: trackFicheroByteById">{{ficheroByteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.autonomia" for="field_autonomia">Autonomia</label>
+                    <select class="form-control" id="field_autonomia" name="autonomia" [(ngModel)]="fichero.autonomia" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="autonomiaOption.id === fichero.autonomia?.id ? fichero.autonomia : autonomiaOption" *ngFor="let autonomiaOption of autonomias; trackBy: trackAutonomiaById">{{autonomiaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.fichero.provincia" for="field_provincia">Provincia</label>
+                    <select class="form-control" id="field_provincia" name="provincia" [(ngModel)]="fichero.provincia" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="provinciaOption.id === fichero.provincia?.id ? fichero.provincia : provinciaOption" *ngFor="let provinciaOption of provincias; trackBy: trackProvinciaById">{{provinciaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

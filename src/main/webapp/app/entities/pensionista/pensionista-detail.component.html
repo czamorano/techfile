@@ -1,0 +1,149 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pensionista">
+            <h2><span jhiTranslate="techfileApp.pensionista.detail.title">Pensionista</span> {{pensionista.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.pensionista.situacionPension">Situacion Pension</span></dt>
+                <dd>
+                    <span>{{pensionista.situacionPension}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.ingresosTotales">Ingresos Totales</span></dt>
+                <dd>
+                    <span>{{pensionista.ingresosTotales}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.trabaja">Trabaja</span></dt>
+                <dd>
+                    <span>{{pensionista.trabaja}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.totalConvivientes">Total Convivientes</span></dt>
+                <dd>
+                    <span>{{pensionista.totalConvivientes}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.ingresosAnualesConvivientes">Ingresos Anuales Convivientes</span></dt>
+                <dd>
+                    <span>{{pensionista.ingresosAnualesConvivientes}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.gradoMinusvalia">Grado Minusvalia</span></dt>
+                <dd>
+                    <span>{{pensionista.gradoMinusvalia}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.porcentajeDiscapacidad">Porcentaje Discapacidad</span></dt>
+                <dd>
+                    <span>{{pensionista.porcentajeDiscapacidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.baremoFactoresSocialesComplementarios">Baremo Factores Sociales Complementarios</span></dt>
+                <dd>
+                    <span>{{pensionista.baremoFactoresSocialesComplementarios}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.baremoNecesidadTerceraPersona">Baremo Necesidad Tercera Persona</span></dt>
+                <dd>
+                    <span>{{pensionista.baremoNecesidadTerceraPersona}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.fechaSolicitudPension">Fecha Solicitud Pension</span></dt>
+                <dd>
+                    <span>{{pensionista.fechaSolicitudPension}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.fechaResolucionPension">Fecha Resolucion Pension</span></dt>
+                <dd>
+                    <span>{{pensionista.fechaResolucionPension}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.fechaAltaNomina">Fecha Alta Nomina</span></dt>
+                <dd>
+                    <span>{{pensionista.fechaAltaNomina}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.importeMensualPension">Importe Mensual Pension</span></dt>
+                <dd>
+                    <span>{{pensionista.importeMensualPension}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.importeMensualComplementoTerceraPersona">Importe Mensual Complemento Tercera Persona</span></dt>
+                <dd>
+                    <span>{{pensionista.importeMensualComplementoTerceraPersona}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.formaCobro">Forma Cobro</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'techfileApp.FormaCobro.' + pensionista.formaCobro}}">{{pensionista.formaCobro}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.entidadBancaria">Entidad Bancaria</span></dt>
+                <dd>
+                    <span>{{pensionista.entidadBancaria}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.cuentaBancaria">Cuenta Bancaria</span></dt>
+                <dd>
+                    <span>{{pensionista.cuentaBancaria}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.numeroCuenta">Numero Cuenta</span></dt>
+                <dd>
+                    <span>{{pensionista.numeroCuenta}}</span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.persona">Persona</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.persona">
+                        <a [routerLink]="['/persona', pensionista.persona?.id, 'view']">{{pensionista.persona?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.perceptor">Perceptor</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.perceptor">
+                        <a [routerLink]="['/perceptor', pensionista.perceptor?.id, 'view']">{{pensionista.perceptor?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.regimenProcedencia">Regimen Procedencia</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.regimenProcedencia">
+                        <a [routerLink]="['/regimen-procedencia', pensionista.regimenProcedencia?.id, 'view']">{{pensionista.regimenProcedencia?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.pensionConcurrente">Pension Concurrente</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.pensionConcurrente">
+                        <a [routerLink]="['/pension-concurrente', pensionista.pensionConcurrente?.id, 'view']">{{pensionista.pensionConcurrente?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.tipoRelacion">Tipo Relacion</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.tipoRelacion">
+                        <a [routerLink]="['/tipo-relacion', pensionista.tipoRelacion?.id, 'view']">{{pensionista.tipoRelacion?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.discapacidad">Discapacidad</span></dt>
+                <dd>
+                    <span *ngFor="let discapacidad of pensionista.discapacidads; let last = last">
+                        <a [routerLink]="['/discapacidad', discapacidad?.id, 'view' ]">{{discapacidad.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.diagnostico">Diagnostico</span></dt>
+                <dd>
+                    <span *ngFor="let diagnostico of pensionista.diagnosticos; let last = last">
+                        <a [routerLink]="['/diagnostico', diagnostico?.id, 'view' ]">{{diagnostico.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.etiologia">Etiologia</span></dt>
+                <dd>
+                    <span *ngFor="let etiologia of pensionista.etiologias; let last = last">
+                        <a [routerLink]="['/etiologia', etiologia?.id, 'view' ]">{{etiologia.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="techfileApp.pensionista.fichero">Fichero</span></dt>
+                <dd>
+                    <div *ngIf="pensionista.fichero">
+                        <a [routerLink]="['/fichero', pensionista.fichero?.id, 'view']">{{pensionista.fichero?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pensionista', pensionista.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

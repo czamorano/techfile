@@ -1,0 +1,32 @@
+
+{
+    "techfileApp": {
+        "fichero" : {
+            "home": {
+                "title": "Ficheroes",
+                "createLabel": "Crear nuevo Fichero",
+                "createOrEditLabel": "Crear o editar Fichero"
+            },
+            "created": "Un nuevo Fichero ha sido creado con el identificador {{ param }}",
+            "updated": "Un Fichero ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Fichero ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Fichero {{ id }}?"
+            },
+            "detail": {
+                "title": "Fichero"
+            },
+            "nombre": "Nombre",
+            "tamagno": "Tamagno",
+            "fechaCreacionOrigen": "Fecha Creacion Origen",
+            "fechaAltaAplicacion": "Fecha Alta Aplicacion",
+            "encoding": "Encoding",
+            "lineas": "Lineas",
+            "ficheroByte": "Fichero Byte",
+            "pensionista": "Pensionista",
+            "mes": "Mes",
+            "autonomia": "Autonomia",
+            "provincia": "Provincia"
+        }
+    }
+}

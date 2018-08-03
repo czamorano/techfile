@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Fichero.
+    -->
+    <changeSet id="20180803034845-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="fichero_byte_id"
+                                 baseTableName="fichero"
+                                 constraintName="fk_fichero_fichero_byte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fichero_byte"/>
+
+        <addForeignKeyConstraint baseColumnNames="autonomia_id"
+                                 baseTableName="fichero"
+                                 constraintName="fk_fichero_autonomia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="autonomia"/>
+
+        <addForeignKeyConstraint baseColumnNames="provincia_id"
+                                 baseTableName="fichero"
+                                 constraintName="fk_fichero_provincia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="provincia"/>
+
+    </changeSet>
+</databaseChangeLog>

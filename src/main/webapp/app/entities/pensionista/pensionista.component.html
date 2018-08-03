@@ -1,0 +1,132 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="techfileApp.pensionista.home.title">Pensionistas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pensionista" [routerLink]="['/pensionista/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="techfileApp.pensionista.home.createLabel">
+            Create new Pensionista
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="pensionistas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="situacionPension"><span jhiTranslate="techfileApp.pensionista.situacionPension">Situacion Pension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ingresosTotales"><span jhiTranslate="techfileApp.pensionista.ingresosTotales">Ingresos Totales</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="trabaja"><span jhiTranslate="techfileApp.pensionista.trabaja">Trabaja</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalConvivientes"><span jhiTranslate="techfileApp.pensionista.totalConvivientes">Total Convivientes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ingresosAnualesConvivientes"><span jhiTranslate="techfileApp.pensionista.ingresosAnualesConvivientes">Ingresos Anuales Convivientes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gradoMinusvalia"><span jhiTranslate="techfileApp.pensionista.gradoMinusvalia">Grado Minusvalia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="porcentajeDiscapacidad"><span jhiTranslate="techfileApp.pensionista.porcentajeDiscapacidad">Porcentaje Discapacidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="baremoFactoresSocialesComplementarios"><span jhiTranslate="techfileApp.pensionista.baremoFactoresSocialesComplementarios">Baremo Factores Sociales Complementarios</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="baremoNecesidadTerceraPersona"><span jhiTranslate="techfileApp.pensionista.baremoNecesidadTerceraPersona">Baremo Necesidad Tercera Persona</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fechaSolicitudPension"><span jhiTranslate="techfileApp.pensionista.fechaSolicitudPension">Fecha Solicitud Pension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fechaResolucionPension"><span jhiTranslate="techfileApp.pensionista.fechaResolucionPension">Fecha Resolucion Pension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fechaAltaNomina"><span jhiTranslate="techfileApp.pensionista.fechaAltaNomina">Fecha Alta Nomina</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="importeMensualPension"><span jhiTranslate="techfileApp.pensionista.importeMensualPension">Importe Mensual Pension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="importeMensualComplementoTerceraPersona"><span jhiTranslate="techfileApp.pensionista.importeMensualComplementoTerceraPersona">Importe Mensual Complemento Tercera Persona</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="formaCobro"><span jhiTranslate="techfileApp.pensionista.formaCobro">Forma Cobro</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entidadBancaria"><span jhiTranslate="techfileApp.pensionista.entidadBancaria">Entidad Bancaria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cuentaBancaria"><span jhiTranslate="techfileApp.pensionista.cuentaBancaria">Cuenta Bancaria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroCuenta"><span jhiTranslate="techfileApp.pensionista.numeroCuenta">Numero Cuenta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="persona.id"><span jhiTranslate="techfileApp.pensionista.persona">Persona</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="perceptor.id"><span jhiTranslate="techfileApp.pensionista.perceptor">Perceptor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="regimenProcedencia.id"><span jhiTranslate="techfileApp.pensionista.regimenProcedencia">Regimen Procedencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pensionConcurrente.id"><span jhiTranslate="techfileApp.pensionista.pensionConcurrente">Pension Concurrente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipoRelacion.id"><span jhiTranslate="techfileApp.pensionista.tipoRelacion">Tipo Relacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fichero.id"><span jhiTranslate="techfileApp.pensionista.fichero">Fichero</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pensionista of pensionistas ;trackBy: trackId">
+                <td><a [routerLink]="['/pensionista', pensionista.id, 'view' ]">{{pensionista.id}}</a></td>
+                <td>{{pensionista.situacionPension}}</td>
+                <td>{{pensionista.ingresosTotales}}</td>
+                <td>{{pensionista.trabaja}}</td>
+                <td>{{pensionista.totalConvivientes}}</td>
+                <td>{{pensionista.ingresosAnualesConvivientes}}</td>
+                <td>{{pensionista.gradoMinusvalia}}</td>
+                <td>{{pensionista.porcentajeDiscapacidad}}</td>
+                <td>{{pensionista.baremoFactoresSocialesComplementarios}}</td>
+                <td>{{pensionista.baremoNecesidadTerceraPersona}}</td>
+                <td>{{pensionista.fechaSolicitudPension | date:'mediumDate'}}</td>
+                <td>{{pensionista.fechaResolucionPension | date:'mediumDate'}}</td>
+                <td>{{pensionista.fechaAltaNomina | date:'mediumDate'}}</td>
+                <td>{{pensionista.importeMensualPension}}</td>
+                <td>{{pensionista.importeMensualComplementoTerceraPersona}}</td>
+                <td jhiTranslate="{{'techfileApp.FormaCobro.' + pensionista.formaCobro}}">{{pensionista.formaCobro}}</td>
+                <td>{{pensionista.entidadBancaria}}</td>
+                <td>{{pensionista.cuentaBancaria}}</td>
+                <td>{{pensionista.numeroCuenta}}</td>
+                <td>
+                    <div *ngIf="pensionista.persona">
+                        <a [routerLink]="['../persona', pensionista.persona?.id, 'view' ]" >{{pensionista.persona?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pensionista.perceptor">
+                        <a [routerLink]="['../perceptor', pensionista.perceptor?.id, 'view' ]" >{{pensionista.perceptor?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pensionista.regimenProcedencia">
+                        <a [routerLink]="['../regimen-procedencia', pensionista.regimenProcedencia?.id, 'view' ]" >{{pensionista.regimenProcedencia?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pensionista.pensionConcurrente">
+                        <a [routerLink]="['../pension-concurrente', pensionista.pensionConcurrente?.id, 'view' ]" >{{pensionista.pensionConcurrente?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pensionista.tipoRelacion">
+                        <a [routerLink]="['../tipo-relacion', pensionista.tipoRelacion?.id, 'view' ]" >{{pensionista.tipoRelacion?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pensionista.fichero">
+                        <a [routerLink]="['../fichero', pensionista.fichero?.id, 'view' ]" >{{pensionista.fichero?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/pensionista', pensionista.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/pensionista', pensionista.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pensionista/'+ pensionista.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="pensionistas && pensionistas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

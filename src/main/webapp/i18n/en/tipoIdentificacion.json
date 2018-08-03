@@ -1,0 +1,11 @@
+{
+    "techfileApp": {
+        "TipoIdentificacion" : {
+            "null": "",
+            "NIF": "NIF",
+            "NIE": "NIE",
+            "CODIGO_FISCAL": "CODIGO_FISCAL",
+            "OTRO": "OTRO"
+        }
+    }
+}

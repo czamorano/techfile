@@ -1,0 +1,90 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="techfileApp.persona.home.title">Personas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-persona-my-suffix" [routerLink]="['/persona-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="techfileApp.persona.home.createLabel">
+            Create new Persona
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="personas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nombre"><span jhiTranslate="techfileApp.persona.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="apellidos"><span jhiTranslate="techfileApp.persona.apellidos">Apellidos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipoIdentificacion"><span jhiTranslate="techfileApp.persona.tipoIdentificacion">Tipo Identificacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="documentoIdentificacion"><span jhiTranslate="techfileApp.persona.documentoIdentificacion">Documento Identificacion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="digitosControl"><span jhiTranslate="techfileApp.persona.digitosControl">Digitos Control</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipoPension"><span jhiTranslate="techfileApp.persona.tipoPension">Tipo Pension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fechaNacimiento"><span jhiTranslate="techfileApp.persona.fechaNacimiento">Fecha Nacimiento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sexo"><span jhiTranslate="techfileApp.persona.sexo">Sexo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="estadoCivil"><span jhiTranslate="techfileApp.persona.estadoCivil">Estado Civil</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="domicilio"><span jhiTranslate="techfileApp.persona.domicilio">Domicilio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="codigoPostal"><span jhiTranslate="techfileApp.persona.codigoPostal">Codigo Postal</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="localidad"><span jhiTranslate="techfileApp.persona.localidad">Localidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="municipio"><span jhiTranslate="techfileApp.persona.municipio">Municipio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nacionalidad"><span jhiTranslate="techfileApp.persona.nacionalidad">Nacionalidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroSS"><span jhiTranslate="techfileApp.persona.numeroSS">Numero SS</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let persona of personas ;trackBy: trackId">
+                <td><a [routerLink]="['/persona-my-suffix', persona.id, 'view' ]">{{persona.id}}</a></td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellidos}}</td>
+                <td jhiTranslate="{{'techfileApp.TipoIdentificacion.' + persona.tipoIdentificacion}}">{{persona.tipoIdentificacion}}</td>
+                <td>{{persona.documentoIdentificacion}}</td>
+                <td>{{persona.digitosControl}}</td>
+                <td jhiTranslate="{{'techfileApp.TipoPension.' + persona.tipoPension}}">{{persona.tipoPension}}</td>
+                <td>{{persona.fechaNacimiento | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'techfileApp.Sexo.' + persona.sexo}}">{{persona.sexo}}</td>
+                <td jhiTranslate="{{'techfileApp.EstadoCivil.' + persona.estadoCivil}}">{{persona.estadoCivil}}</td>
+                <td>{{persona.domicilio}}</td>
+                <td>{{persona.codigoPostal}}</td>
+                <td>{{persona.localidad}}</td>
+                <td>{{persona.municipio}}</td>
+                <td>{{persona.nacionalidad}}</td>
+                <td>{{persona.numeroSS}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/persona-my-suffix', persona.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/persona-my-suffix', persona.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'persona-my-suffix/'+ persona.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="personas && personas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

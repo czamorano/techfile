@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="techfileApp.fichero.home.title">Ficheroes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fichero" [routerLink]="['/fichero/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="techfileApp.fichero.home.createLabel">
+            Create new Fichero
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="ficheroes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.nombre">Nombre</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.tamagno">Tamagno</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.fechaCreacionOrigen">Fecha Creacion Origen</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.fechaAltaAplicacion">Fecha Alta Aplicacion</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.encoding">Encoding</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.lineas">Lineas</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.ficheroByte">Fichero Byte</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.autonomia">Autonomia</span></th>
+            <th><span jhiTranslate="techfileApp.fichero.provincia">Provincia</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fichero of ficheroes ;trackBy: trackId">
+                <td><a [routerLink]="['/fichero', fichero.id, 'view' ]">{{fichero.id}}</a></td>
+                <td>{{fichero.nombre}}</td>
+                <td>{{fichero.tamagno}}</td>
+                <td>{{fichero.fechaCreacionOrigen | date:'mediumDate'}}</td>
+                <td>{{fichero.fechaAltaAplicacion | date:'mediumDate'}}</td>
+                <td>{{fichero.encoding}}</td>
+                <td>{{fichero.lineas}}</td>
+                <td>
+                    <div *ngIf="fichero.ficheroByte">
+                        <a [routerLink]="['../fichero-byte', fichero.ficheroByte?.id, 'view' ]" >{{fichero.ficheroByte?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fichero.autonomia">
+                        <a [routerLink]="['../autonomia', fichero.autonomia?.id, 'view' ]" >{{fichero.autonomia?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fichero.provincia">
+                        <a [routerLink]="['../provincia', fichero.provincia?.id, 'view' ]" >{{fichero.provincia?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/fichero', fichero.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/fichero', fichero.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'fichero/'+ fichero.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

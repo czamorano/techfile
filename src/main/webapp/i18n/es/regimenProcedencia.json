@@ -1,0 +1,22 @@
+
+{
+    "techfileApp": {
+        "regimenProcedencia" : {
+            "home": {
+                "title": "Regimen Procedencias",
+                "createLabel": "Crear nuevo Regimen Procedencia",
+                "createOrEditLabel": "Crear o editar Regimen Procedencia"
+            },
+            "created": "Un nuevo Regimen Procedencia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Regimen Procedencia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Regimen Procedencia ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Regimen Procedencia {{ id }}?"
+            },
+            "detail": {
+                "title": "Regimen Procedencia"
+            },
+            "descripcion": "Descripcion"
+        }
+    }
+}

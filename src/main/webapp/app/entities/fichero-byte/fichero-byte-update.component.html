@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-fichero-byte-heading" jhiTranslate="techfileApp.ficheroByte.home.createOrEditLabel">Create or edit a Fichero Byte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!ficheroByte.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="ficheroByte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.ficheroByte.fileBytes" for="field_fileBytes">File Bytes</label>
+                    <div>
+                        <div *ngIf="ficheroByte.fileBytes" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(ficheroByte.fileBytesContentType, ficheroByte.fileBytes)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ficheroByte.fileBytesContentType}}, {{byteSize(ficheroByte.fileBytes)}}</span>
+                            <button type="button" (click)="ficheroByte.fileBytes=null;ficheroByte.fileBytesContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fileBytes" (change)="setFileData($event, ficheroByte, 'fileBytes', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fileBytes" id="field_fileBytes"
+                        [(ngModel)]="ficheroByte.fileBytes" />
+                    <input type="hidden" class="form-control" name="fileBytesContentType" id="field_fileBytesContentType"
+                        [(ngModel)]="ficheroByte.fileBytesContentType" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

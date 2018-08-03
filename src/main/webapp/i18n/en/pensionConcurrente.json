@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "pensionConcurrente" : {
+            "home": {
+                "title": "Pension Concurrentes",
+                "createLabel": "Create a new Pension Concurrente",
+                "createOrEditLabel": "Create or edit a Pension Concurrente"
+            },
+            "created": "A new Pension Concurrente is created with identifier {{ param }}",
+            "updated": "A Pension Concurrente is updated with identifier {{ param }}",
+            "deleted": "A Pension Concurrente is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pension Concurrente {{ id }}?"
+            },
+            "detail": {
+                "title": "Pension Concurrente"
+            },
+            "codigo": "Codigo",
+            "descripcion": "Descripcion"
+        }
+    }
+}

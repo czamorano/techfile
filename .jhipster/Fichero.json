@@ -1,0 +1,84 @@
+{
+    "name": "Fichero",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tamagno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaCreacionOrigen",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaAltaAplicacion",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "encoding",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lineas",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "ficheroByte",
+            "otherEntityName": "ficheroByte",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "fichero"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pensionista",
+            "otherEntityName": "pensionista",
+            "otherEntityRelationshipName": "fichero"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "mes",
+            "otherEntityName": "mes",
+            "otherEntityRelationshipName": "fichero"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "autonomia",
+            "otherEntityName": "autonomia",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "provincia",
+            "otherEntityName": "provincia",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180803034845",
+    "entityTableName": "fichero",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

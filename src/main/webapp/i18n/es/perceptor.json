@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "perceptor" : {
+            "home": {
+                "title": "Perceptors",
+                "createLabel": "Crear nuevo Perceptor",
+                "createOrEditLabel": "Crear o editar Perceptor"
+            },
+            "created": "Un nuevo Perceptor ha sido creado con el identificador {{ param }}",
+            "updated": "Un Perceptor ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Perceptor ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Perceptor {{ id }}?"
+            },
+            "detail": {
+                "title": "Perceptor"
+            },
+            "persona": "Persona",
+            "pensionista": "Pensionista"
+        }
+    }
+}

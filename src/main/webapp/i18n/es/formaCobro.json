@@ -1,0 +1,9 @@
+{
+    "techfileApp": {
+        "FormaCobro" : {
+            "null": "",
+            "DIRECTO_EN_VENTANILLA": "DIRECTO_EN_VENTANILLA",
+            "INGRESO_EN_CUENTA": "INGRESO_EN_CUENTA"
+        }
+    }
+}

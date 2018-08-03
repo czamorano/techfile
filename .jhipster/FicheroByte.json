@@ -1,0 +1,20 @@
+{
+    "name": "FicheroByte",
+    "fields": [
+        {
+            "fieldName": "fileBytes",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180803034846",
+    "entityTableName": "fichero_byte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

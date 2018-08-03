@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "perceptor" : {
+            "home": {
+                "title": "Perceptors",
+                "createLabel": "Create a new Perceptor",
+                "createOrEditLabel": "Create or edit a Perceptor"
+            },
+            "created": "A new Perceptor is created with identifier {{ param }}",
+            "updated": "A Perceptor is updated with identifier {{ param }}",
+            "deleted": "A Perceptor is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Perceptor {{ id }}?"
+            },
+            "detail": {
+                "title": "Perceptor"
+            },
+            "persona": "Persona",
+            "pensionista": "Pensionista"
+        }
+    }
+}

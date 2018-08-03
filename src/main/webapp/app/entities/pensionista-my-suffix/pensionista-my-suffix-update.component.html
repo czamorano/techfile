@@ -1,0 +1,191 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pensionista-my-suffix-heading" jhiTranslate="techfileApp.pensionista.home.createOrEditLabel">Create or edit a Pensionista</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pensionista.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pensionista.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.situacionPension" for="field_situacionPension">Situacion Pension</label>
+                    <input type="number" class="form-control" name="situacionPension" id="field_situacionPension"
+                        [(ngModel)]="pensionista.situacionPension" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.ingresosTotales" for="field_ingresosTotales">Ingresos Totales</label>
+                    <input type="number" class="form-control" name="ingresosTotales" id="field_ingresosTotales"
+                        [(ngModel)]="pensionista.ingresosTotales" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.trabaja" for="field_trabaja">Trabaja</label>
+                    <input type="checkbox" class="form-control" name="trabaja" id="field_trabaja"
+                        [(ngModel)]="pensionista.trabaja" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.totalConvivientes" for="field_totalConvivientes">Total Convivientes</label>
+                    <input type="number" class="form-control" name="totalConvivientes" id="field_totalConvivientes"
+                        [(ngModel)]="pensionista.totalConvivientes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.ingresosAnualesConvivientes" for="field_ingresosAnualesConvivientes">Ingresos Anuales Convivientes</label>
+                    <input type="number" class="form-control" name="ingresosAnualesConvivientes" id="field_ingresosAnualesConvivientes"
+                        [(ngModel)]="pensionista.ingresosAnualesConvivientes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.gradoMinusvalia" for="field_gradoMinusvalia">Grado Minusvalia</label>
+                    <input type="number" class="form-control" name="gradoMinusvalia" id="field_gradoMinusvalia"
+                        [(ngModel)]="pensionista.gradoMinusvalia" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.porcentajeDiscapacidad" for="field_porcentajeDiscapacidad">Porcentaje Discapacidad</label>
+                    <input type="number" class="form-control" name="porcentajeDiscapacidad" id="field_porcentajeDiscapacidad"
+                        [(ngModel)]="pensionista.porcentajeDiscapacidad" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.baremoFactoresSocialesComplementarios" for="field_baremoFactoresSocialesComplementarios">Baremo Factores Sociales Complementarios</label>
+                    <input type="number" class="form-control" name="baremoFactoresSocialesComplementarios" id="field_baremoFactoresSocialesComplementarios"
+                        [(ngModel)]="pensionista.baremoFactoresSocialesComplementarios" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.baremoNecesidadTerceraPersona" for="field_baremoNecesidadTerceraPersona">Baremo Necesidad Tercera Persona</label>
+                    <input type="number" class="form-control" name="baremoNecesidadTerceraPersona" id="field_baremoNecesidadTerceraPersona"
+                        [(ngModel)]="pensionista.baremoNecesidadTerceraPersona" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.fechaSolicitudPension" for="field_fechaSolicitudPension">Fecha Solicitud Pension</label>
+                    <div class="input-group">
+                        <input id="field_fechaSolicitudPension" type="text" class="form-control" name="fechaSolicitudPension" ngbDatepicker  #fechaSolicitudPensionDp="ngbDatepicker" [(ngModel)]="pensionista.fechaSolicitudPension"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaSolicitudPensionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.fechaResolucionPension" for="field_fechaResolucionPension">Fecha Resolucion Pension</label>
+                    <div class="input-group">
+                        <input id="field_fechaResolucionPension" type="text" class="form-control" name="fechaResolucionPension" ngbDatepicker  #fechaResolucionPensionDp="ngbDatepicker" [(ngModel)]="pensionista.fechaResolucionPension"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaResolucionPensionDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.fechaAltaNomina" for="field_fechaAltaNomina">Fecha Alta Nomina</label>
+                    <div class="input-group">
+                        <input id="field_fechaAltaNomina" type="text" class="form-control" name="fechaAltaNomina" ngbDatepicker  #fechaAltaNominaDp="ngbDatepicker" [(ngModel)]="pensionista.fechaAltaNomina"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaAltaNominaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.importeMensualPension" for="field_importeMensualPension">Importe Mensual Pension</label>
+                    <input type="number" class="form-control" name="importeMensualPension" id="field_importeMensualPension"
+                        [(ngModel)]="pensionista.importeMensualPension" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.importeMensualComplementoTerceraPersona" for="field_importeMensualComplementoTerceraPersona">Importe Mensual Complemento Tercera Persona</label>
+                    <input type="number" class="form-control" name="importeMensualComplementoTerceraPersona" id="field_importeMensualComplementoTerceraPersona"
+                        [(ngModel)]="pensionista.importeMensualComplementoTerceraPersona" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.formaCobro" for="field_formaCobro">Forma Cobro</label>
+                    <select class="form-control" name="formaCobro" [(ngModel)]="pensionista.formaCobro" id="field_formaCobro" >
+                        <option value="DIRECTO_EN_VENTANILLA">{{'techfileApp.FormaCobro.DIRECTO_EN_VENTANILLA' | translate}}</option>
+                        <option value="INGRESO_EN_CUENTA">{{'techfileApp.FormaCobro.INGRESO_EN_CUENTA' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.entidadBancaria" for="field_entidadBancaria">Entidad Bancaria</label>
+                    <input type="number" class="form-control" name="entidadBancaria" id="field_entidadBancaria"
+                        [(ngModel)]="pensionista.entidadBancaria" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.cuentaBancaria" for="field_cuentaBancaria">Cuenta Bancaria</label>
+                    <input type="number" class="form-control" name="cuentaBancaria" id="field_cuentaBancaria"
+                        [(ngModel)]="pensionista.cuentaBancaria" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.numeroCuenta" for="field_numeroCuenta">Numero Cuenta</label>
+                    <input type="text" class="form-control" name="numeroCuenta" id="field_numeroCuenta"
+                        [(ngModel)]="pensionista.numeroCuenta" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.persona" for="field_persona">Persona</label>
+                    <select class="form-control" id="field_persona" name="persona" [(ngModel)]="pensionista.persona">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personaOption.id === pensionista.persona?.id ? pensionista.persona : personaOption" *ngFor="let personaOption of personas; trackBy: trackPersonaById">{{personaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.perceptor" for="field_perceptor">Perceptor</label>
+                    <select class="form-control" id="field_perceptor" name="perceptor" [(ngModel)]="pensionista.perceptor">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="perceptorOption.id === pensionista.perceptor?.id ? pensionista.perceptor : perceptorOption" *ngFor="let perceptorOption of perceptors; trackBy: trackPerceptorById">{{perceptorOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.regimenProcedencia" for="field_regimenProcedencia">Regimen Procedencia</label>
+                    <select class="form-control" id="field_regimenProcedencia" name="regimenProcedencia" [(ngModel)]="pensionista.regimenProcedencia" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="regimenProcedenciaOption.id === pensionista.regimenProcedencia?.id ? pensionista.regimenProcedencia : regimenProcedenciaOption" *ngFor="let regimenProcedenciaOption of regimenprocedencias; trackBy: trackRegimenProcedenciaById">{{regimenProcedenciaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.pensionConcurrente" for="field_pensionConcurrente">Pension Concurrente</label>
+                    <select class="form-control" id="field_pensionConcurrente" name="pensionConcurrente" [(ngModel)]="pensionista.pensionConcurrente" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pensionConcurrenteOption.id === pensionista.pensionConcurrente?.id ? pensionista.pensionConcurrente : pensionConcurrenteOption" *ngFor="let pensionConcurrenteOption of pensionconcurrentes; trackBy: trackPensionConcurrenteById">{{pensionConcurrenteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.tipoRelacion" for="field_tipoRelacion">Tipo Relacion</label>
+                    <select class="form-control" id="field_tipoRelacion" name="tipoRelacion" [(ngModel)]="pensionista.tipoRelacion" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoRelacionOption.id === pensionista.tipoRelacion?.id ? pensionista.tipoRelacion : tipoRelacionOption" *ngFor="let tipoRelacionOption of tiporelacions; trackBy: trackTipoRelacionById">{{tipoRelacionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="techfileApp.pensionista.discapacidad" for="field_discapacidad">Discapacidad</label>
+                    <select class="form-control" id="field_discapacidad" multiple name="discapacidad" [(ngModel)]="pensionista.discapacidads">
+                        <option [ngValue]="getSelected(pensionista.discapacidads, discapacidadOption)" *ngFor="let discapacidadOption of discapacidads; trackBy: trackDiscapacidadById">{{discapacidadOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="techfileApp.pensionista.diagnostico" for="field_diagnostico">Diagnostico</label>
+                    <select class="form-control" id="field_diagnostico" multiple name="diagnostico" [(ngModel)]="pensionista.diagnosticos">
+                        <option [ngValue]="getSelected(pensionista.diagnosticos, diagnosticoOption)" *ngFor="let diagnosticoOption of diagnosticos; trackBy: trackDiagnosticoById">{{diagnosticoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="techfileApp.pensionista.etiologia" for="field_etiologia">Etiologia</label>
+                    <select class="form-control" id="field_etiologia" multiple name="etiologia" [(ngModel)]="pensionista.etiologias">
+                        <option [ngValue]="getSelected(pensionista.etiologias, etiologiaOption)" *ngFor="let etiologiaOption of etiologias; trackBy: trackEtiologiaById">{{etiologiaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="techfileApp.pensionista.fichero" for="field_fichero">Fichero</label>
+                    <select class="form-control" id="field_fichero" name="fichero" [(ngModel)]="pensionista.fichero" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ficheroOption.id === pensionista.fichero?.id ? pensionista.fichero : ficheroOption" *ngFor="let ficheroOption of ficheroes; trackBy: trackFicheroById">{{ficheroOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

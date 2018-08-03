@@ -1,0 +1,29 @@
+{
+    "name": "Autonomia",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "provincia",
+            "otherEntityName": "provincia",
+            "otherEntityRelationshipName": "autonomia"
+        }
+    ],
+    "changelogDate": "20180802235803",
+    "entityTableName": "autonomia",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

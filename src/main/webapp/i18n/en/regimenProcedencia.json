@@ -1,0 +1,22 @@
+
+{
+    "techfileApp": {
+        "regimenProcedencia" : {
+            "home": {
+                "title": "Regimen Procedencias",
+                "createLabel": "Create a new Regimen Procedencia",
+                "createOrEditLabel": "Create or edit a Regimen Procedencia"
+            },
+            "created": "A new Regimen Procedencia is created with identifier {{ param }}",
+            "updated": "A Regimen Procedencia is updated with identifier {{ param }}",
+            "deleted": "A Regimen Procedencia is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Regimen Procedencia {{ id }}?"
+            },
+            "detail": {
+                "title": "Regimen Procedencia"
+            },
+            "descripcion": "Descripcion"
+        }
+    }
+}

@@ -5,6 +5,28 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180802235803_added_entity_Autonomia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803000646_added_entity_Provincia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034846_added_entity_FicheroByte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034837_added_entity_Mes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034838_added_entity_PensionConcurrente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034839_added_entity_TipoRelacion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034840_added_entity_RegimenProcedencia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034841_added_entity_Persona.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034842_added_entity_Pensionista.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034843_added_entity_Conviviente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034844_added_entity_Perceptor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034845_added_entity_Fichero.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034847_added_entity_Discapacidad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034848_added_entity_Diagnostico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034849_added_entity_Etiologia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034850_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180803000646_added_entity_constraints_Provincia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034837_added_entity_constraints_Mes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034842_added_entity_constraints_Pensionista.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034843_added_entity_constraints_Conviviente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034844_added_entity_constraints_Perceptor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180803034845_added_entity_constraints_Fichero.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,29 @@
+{
+    "name": "Conviviente",
+    "fields": [
+        {
+            "fieldName": "orden",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pensionista",
+            "otherEntityName": "pensionista",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180803034843",
+    "entityTableName": "conviviente",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

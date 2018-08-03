@@ -1,0 +1,23 @@
+
+{
+    "techfileApp": {
+        "conviviente" : {
+            "home": {
+                "title": "Convivientes",
+                "createLabel": "Crear nuevo Conviviente",
+                "createOrEditLabel": "Crear o editar Conviviente"
+            },
+            "created": "Un nuevo Conviviente ha sido creado con el identificador {{ param }}",
+            "updated": "Un Conviviente ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Conviviente ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Conviviente {{ id }}?"
+            },
+            "detail": {
+                "title": "Conviviente"
+            },
+            "orden": "Orden",
+            "pensionista": "Pensionista"
+        }
+    }
+}

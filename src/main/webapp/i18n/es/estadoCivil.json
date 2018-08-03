@@ -1,0 +1,12 @@
+{
+    "techfileApp": {
+        "EstadoCivil" : {
+            "null": "",
+            "CASADO": "CASADO",
+            "DIVORCIADO": "DIVORCIADO",
+            "SEPARADO": "SEPARADO",
+            "SOLTERO": "SOLTERO",
+            "VIUDO": "VIUDO"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+{
+    "techfileApp": {
+        "mes" : {
+            "home": {
+                "title": "Mes",
+                "createLabel": "Crear nuevo Mes",
+                "createOrEditLabel": "Crear o editar Mes"
+            },
+            "created": "Un nuevo Mes ha sido creado con el identificador {{ param }}",
+            "updated": "Un Mes ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Mes ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Mes {{ id }}?"
+            },
+            "detail": {
+                "title": "Mes"
+            },
+            "agno": "Agno",
+            "mes": "Mes",
+            "fichero": "Fichero"
+        }
+    }
+}

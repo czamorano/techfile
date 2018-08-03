@@ -1,0 +1,24 @@
+
+{
+    "techfileApp": {
+        "mes" : {
+            "home": {
+                "title": "Mes",
+                "createLabel": "Create a new Mes",
+                "createOrEditLabel": "Create or edit a Mes"
+            },
+            "created": "A new Mes is created with identifier {{ param }}",
+            "updated": "A Mes is updated with identifier {{ param }}",
+            "deleted": "A Mes is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Mes {{ id }}?"
+            },
+            "detail": {
+                "title": "Mes"
+            },
+            "agno": "Agno",
+            "mes": "Mes",
+            "fichero": "Fichero"
+        }
+    }
+}

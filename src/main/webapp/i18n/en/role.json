@@ -1,0 +1,10 @@
+{
+    "techfileApp": {
+        "Role" : {
+            "null": "",
+            "FIT_PLANIFICADOR": "FIT_PLANIFICADOR",
+            "FIT_AUTONOMIA": "FIT_AUTONOMIA",
+            "FIT_GESTOR": "FIT_GESTOR"
+        }
+    }
+}

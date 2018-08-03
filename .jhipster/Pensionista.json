@@ -1,0 +1,159 @@
+{
+    "name": "Pensionista",
+    "fields": [
+        {
+            "fieldName": "situacionPension",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "ingresosTotales",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "trabaja",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "totalConvivientes",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "ingresosAnualesConvivientes",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "gradoMinusvalia",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "porcentajeDiscapacidad",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "baremoFactoresSocialesComplementarios",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "baremoNecesidadTerceraPersona",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "fechaSolicitudPension",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaResolucionPension",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaAltaNomina",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "importeMensualPension",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "importeMensualComplementoTerceraPersona",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "formaCobro",
+            "fieldType": "FormaCobro",
+            "fieldValues": "DIRECTO_EN_VENTANILLA,INGRESO_EN_CUENTA"
+        },
+        {
+            "fieldName": "entidadBancaria",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "cuentaBancaria",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "numeroCuenta",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "persona",
+            "otherEntityName": "persona",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "pensionista"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "perceptor",
+            "otherEntityName": "perceptor",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "pensionista"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conviviente",
+            "otherEntityName": "conviviente",
+            "otherEntityRelationshipName": "pensionista"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "regimenProcedencia",
+            "otherEntityName": "regimenProcedencia",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pensionConcurrente",
+            "otherEntityName": "pensionConcurrente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tipoRelacion",
+            "otherEntityName": "tipoRelacion",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "pensionista",
+            "relationshipName": "discapacidad",
+            "otherEntityName": "discapacidad",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "pensionista",
+            "relationshipName": "diagnostico",
+            "otherEntityName": "diagnostico",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "pensionista",
+            "relationshipName": "etiologia",
+            "otherEntityName": "etiologia",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "fichero",
+            "otherEntityName": "fichero",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180803034842",
+    "entityTableName": "pensionista",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

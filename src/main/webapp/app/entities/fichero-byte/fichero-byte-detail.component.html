@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ficheroByte">
+            <h2><span jhiTranslate="techfileApp.ficheroByte.detail.title">Fichero Byte</span> {{ficheroByte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="techfileApp.ficheroByte.fileBytes">File Bytes</span></dt>
+                <dd>
+                    <div *ngIf="ficheroByte.fileBytes">
+                        <a (click)="openFile(ficheroByte.fileBytesContentType, ficheroByte.fileBytes)" jhiTranslate="entity.action.open">open</a>
+                        {{ficheroByte.fileBytesContentType}}, {{byteSize(ficheroByte.fileBytes)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fichero-byte', ficheroByte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
