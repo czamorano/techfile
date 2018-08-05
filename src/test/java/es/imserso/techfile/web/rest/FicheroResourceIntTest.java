@@ -4,7 +4,6 @@ import es.imserso.techfile.TechfileApp;
 
 import es.imserso.techfile.domain.Fichero;
 import es.imserso.techfile.repository.FicheroRepository;
-import es.imserso.techfile.service.FicheroService;
 import es.imserso.techfile.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -63,10 +62,6 @@ public class FicheroResourceIntTest {
     @Autowired
     private FicheroRepository ficheroRepository;
 
-    
-
-    @Autowired
-    private FicheroService ficheroService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -87,7 +82,7 @@ public class FicheroResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FicheroResource ficheroResource = new FicheroResource(ficheroService);
+        final FicheroResource ficheroResource = new FicheroResource(ficheroRepository);
         this.restFicheroMockMvc = MockMvcBuilders.standaloneSetup(ficheroResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -281,7 +276,7 @@ public class FicheroResourceIntTest {
     @Transactional
     public void updateFichero() throws Exception {
         // Initialize the database
-        ficheroService.save(fichero);
+        ficheroRepository.saveAndFlush(fichero);
 
         int databaseSizeBeforeUpdate = ficheroRepository.findAll().size();
 
@@ -336,7 +331,7 @@ public class FicheroResourceIntTest {
     @Transactional
     public void deleteFichero() throws Exception {
         // Initialize the database
-        ficheroService.save(fichero);
+        ficheroRepository.saveAndFlush(fichero);
 
         int databaseSizeBeforeDelete = ficheroRepository.findAll().size();
 

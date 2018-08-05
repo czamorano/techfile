@@ -2,7 +2,7 @@ package es.imserso.techfile.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import es.imserso.techfile.domain.Pensionista;
-import es.imserso.techfile.service.PensionistaService;
+import es.imserso.techfile.repository.PensionistaRepository;
 import es.imserso.techfile.web.rest.errors.BadRequestAlertException;
 import es.imserso.techfile.web.rest.util.HeaderUtil;
 import es.imserso.techfile.web.rest.util.PaginationUtil;
@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -33,10 +34,10 @@ public class PensionistaResource {
 
     private static final String ENTITY_NAME = "pensionista";
 
-    private final PensionistaService pensionistaService;
+    private final PensionistaRepository pensionistaRepository;
 
-    public PensionistaResource(PensionistaService pensionistaService) {
-        this.pensionistaService = pensionistaService;
+    public PensionistaResource(PensionistaRepository pensionistaRepository) {
+        this.pensionistaRepository = pensionistaRepository;
     }
 
     /**
@@ -48,12 +49,12 @@ public class PensionistaResource {
      */
     @PostMapping("/pensionistas")
     @Timed
-    public ResponseEntity<Pensionista> createPensionista(@RequestBody Pensionista pensionista) throws URISyntaxException {
+    public ResponseEntity<Pensionista> createPensionista(@Valid @RequestBody Pensionista pensionista) throws URISyntaxException {
         log.debug("REST request to save Pensionista : {}", pensionista);
         if (pensionista.getId() != null) {
             throw new BadRequestAlertException("A new pensionista cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Pensionista result = pensionistaService.save(pensionista);
+        Pensionista result = pensionistaRepository.save(pensionista);
         return ResponseEntity.created(new URI("/api/pensionistas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -70,12 +71,12 @@ public class PensionistaResource {
      */
     @PutMapping("/pensionistas")
     @Timed
-    public ResponseEntity<Pensionista> updatePensionista(@RequestBody Pensionista pensionista) throws URISyntaxException {
+    public ResponseEntity<Pensionista> updatePensionista(@Valid @RequestBody Pensionista pensionista) throws URISyntaxException {
         log.debug("REST request to update Pensionista : {}", pensionista);
         if (pensionista.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Pensionista result = pensionistaService.save(pensionista);
+        Pensionista result = pensionistaRepository.save(pensionista);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, pensionista.getId().toString()))
             .body(result);
@@ -85,20 +86,14 @@ public class PensionistaResource {
      * GET  /pensionistas : get all the pensionistas.
      *
      * @param pageable the pagination information
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of pensionistas in body
      */
     @GetMapping("/pensionistas")
     @Timed
-    public ResponseEntity<List<Pensionista>> getAllPensionistas(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<Pensionista>> getAllPensionistas(Pageable pageable) {
         log.debug("REST request to get a page of Pensionistas");
-        Page<Pensionista> page;
-        if (eagerload) {
-            page = pensionistaService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = pensionistaService.findAll(pageable);
-        }
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/pensionistas?eagerload=%b", eagerload));
+        Page<Pensionista> page = pensionistaRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pensionistas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -112,7 +107,7 @@ public class PensionistaResource {
     @Timed
     public ResponseEntity<Pensionista> getPensionista(@PathVariable Long id) {
         log.debug("REST request to get Pensionista : {}", id);
-        Optional<Pensionista> pensionista = pensionistaService.findOne(id);
+        Optional<Pensionista> pensionista = pensionistaRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(pensionista);
     }
 
@@ -126,7 +121,8 @@ public class PensionistaResource {
     @Timed
     public ResponseEntity<Void> deletePensionista(@PathVariable Long id) {
         log.debug("REST request to delete Pensionista : {}", id);
-        pensionistaService.delete(id);
+
+        pensionistaRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

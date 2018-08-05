@@ -1,6 +1,5 @@
 package es.imserso.techfile.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -35,10 +34,6 @@ public class Mes implements Serializable {
     @Column(name = "mes", nullable = false)
     private Long mes;
 
-    @ManyToOne
-    @JsonIgnoreProperties("mes")
-    private Fichero fichero;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -72,19 +67,6 @@ public class Mes implements Serializable {
 
     public void setMes(Long mes) {
         this.mes = mes;
-    }
-
-    public Fichero getFichero() {
-        return fichero;
-    }
-
-    public Mes fichero(Fichero fichero) {
-        this.fichero = fichero;
-        return this;
-    }
-
-    public void setFichero(Fichero fichero) {
-        this.fichero = fichero;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

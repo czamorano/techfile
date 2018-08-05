@@ -11,10 +11,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Task entity.
- * @author The JHipster team.
+ * Entidad TipoRelacion
+ * <p>
+ * Relación entre el pensionista y el perceptor
+ * 
+ * @author czamorano
  */
-@ApiModel(description = "Task entity. @author The JHipster team.")
+@ApiModel(description = "Entidad TipoRelacion<p>Relación entre el pensionista y el perceptor @author czamorano")
 @Entity
 @Table(name = "tipo_relacion")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

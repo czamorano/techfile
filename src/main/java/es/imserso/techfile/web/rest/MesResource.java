@@ -5,9 +5,14 @@ import es.imserso.techfile.domain.Mes;
 import es.imserso.techfile.repository.MesRepository;
 import es.imserso.techfile.web.rest.errors.BadRequestAlertException;
 import es.imserso.techfile.web.rest.util.HeaderUtil;
+import es.imserso.techfile.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -80,13 +85,16 @@ public class MesResource {
     /**
      * GET  /mes : get all the mes.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of mes in body
      */
     @GetMapping("/mes")
     @Timed
-    public List<Mes> getAllMes() {
-        log.debug("REST request to get all Mes");
-        return mesRepository.findAll();
+    public ResponseEntity<List<Mes>> getAllMes(Pageable pageable) {
+        log.debug("REST request to get a page of Mes");
+        Page<Mes> page = mesRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/mes");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**

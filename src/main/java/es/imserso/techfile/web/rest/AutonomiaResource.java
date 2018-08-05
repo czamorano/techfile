@@ -2,7 +2,7 @@ package es.imserso.techfile.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import es.imserso.techfile.domain.Autonomia;
-import es.imserso.techfile.service.AutonomiaService;
+import es.imserso.techfile.repository.AutonomiaRepository;
 import es.imserso.techfile.web.rest.errors.BadRequestAlertException;
 import es.imserso.techfile.web.rest.util.HeaderUtil;
 import es.imserso.techfile.web.rest.util.PaginationUtil;
@@ -34,10 +34,10 @@ public class AutonomiaResource {
 
     private static final String ENTITY_NAME = "autonomia";
 
-    private final AutonomiaService autonomiaService;
+    private final AutonomiaRepository autonomiaRepository;
 
-    public AutonomiaResource(AutonomiaService autonomiaService) {
-        this.autonomiaService = autonomiaService;
+    public AutonomiaResource(AutonomiaRepository autonomiaRepository) {
+        this.autonomiaRepository = autonomiaRepository;
     }
 
     /**
@@ -54,7 +54,7 @@ public class AutonomiaResource {
         if (autonomia.getId() != null) {
             throw new BadRequestAlertException("A new autonomia cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Autonomia result = autonomiaService.save(autonomia);
+        Autonomia result = autonomiaRepository.save(autonomia);
         return ResponseEntity.created(new URI("/api/autonomias/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -76,7 +76,7 @@ public class AutonomiaResource {
         if (autonomia.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Autonomia result = autonomiaService.save(autonomia);
+        Autonomia result = autonomiaRepository.save(autonomia);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, autonomia.getId().toString()))
             .body(result);
@@ -92,7 +92,7 @@ public class AutonomiaResource {
     @Timed
     public ResponseEntity<List<Autonomia>> getAllAutonomias(Pageable pageable) {
         log.debug("REST request to get a page of Autonomias");
-        Page<Autonomia> page = autonomiaService.findAll(pageable);
+        Page<Autonomia> page = autonomiaRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/autonomias");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -107,7 +107,7 @@ public class AutonomiaResource {
     @Timed
     public ResponseEntity<Autonomia> getAutonomia(@PathVariable Long id) {
         log.debug("REST request to get Autonomia : {}", id);
-        Optional<Autonomia> autonomia = autonomiaService.findOne(id);
+        Optional<Autonomia> autonomia = autonomiaRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(autonomia);
     }
 
@@ -121,7 +121,8 @@ public class AutonomiaResource {
     @Timed
     public ResponseEntity<Void> deleteAutonomia(@PathVariable Long id) {
         log.debug("REST request to delete Autonomia : {}", id);
-        autonomiaService.delete(id);
+
+        autonomiaRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

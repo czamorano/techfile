@@ -78,6 +78,7 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
             "relationshipName": "persona",
             "otherEntityName": "persona",
             "otherEntityField": "id",
@@ -86,6 +87,7 @@
         },
         {
             "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
             "relationshipName": "perceptor",
             "otherEntityName": "perceptor",
             "otherEntityField": "id",
@@ -117,33 +119,27 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "pensionista",
-            "relationshipName": "discapacidad",
-            "otherEntityName": "discapacidad",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "pensionista",
-            "relationshipName": "diagnostico",
-            "otherEntityName": "diagnostico",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "pensionista",
-            "relationshipName": "etiologia",
-            "otherEntityName": "etiologia",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-one",
             "relationshipName": "fichero",
             "otherEntityName": "fichero",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "discapacidad",
+            "otherEntityName": "discapacidad",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "diagnostico",
+            "otherEntityName": "diagnostico",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "etiologia",
+            "otherEntityName": "etiologia",
             "otherEntityField": "id"
         }
     ],
@@ -151,9 +147,10 @@
     "entityTableName": "pensionista",
     "dto": "no",
     "pagination": "pagination",
-    "service": "serviceClass",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

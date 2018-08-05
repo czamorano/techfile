@@ -2,12 +2,17 @@ package es.imserso.techfile.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import es.imserso.techfile.domain.Fichero;
-import es.imserso.techfile.service.FicheroService;
+import es.imserso.techfile.repository.FicheroRepository;
 import es.imserso.techfile.web.rest.errors.BadRequestAlertException;
 import es.imserso.techfile.web.rest.util.HeaderUtil;
+import es.imserso.techfile.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +34,10 @@ public class FicheroResource {
 
     private static final String ENTITY_NAME = "fichero";
 
-    private final FicheroService ficheroService;
+    private final FicheroRepository ficheroRepository;
 
-    public FicheroResource(FicheroService ficheroService) {
-        this.ficheroService = ficheroService;
+    public FicheroResource(FicheroRepository ficheroRepository) {
+        this.ficheroRepository = ficheroRepository;
     }
 
     /**
@@ -49,7 +54,7 @@ public class FicheroResource {
         if (fichero.getId() != null) {
             throw new BadRequestAlertException("A new fichero cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Fichero result = ficheroService.save(fichero);
+        Fichero result = ficheroRepository.save(fichero);
         return ResponseEntity.created(new URI("/api/ficheroes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -71,7 +76,7 @@ public class FicheroResource {
         if (fichero.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Fichero result = ficheroService.save(fichero);
+        Fichero result = ficheroRepository.save(fichero);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, fichero.getId().toString()))
             .body(result);
@@ -80,13 +85,16 @@ public class FicheroResource {
     /**
      * GET  /ficheroes : get all the ficheroes.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of ficheroes in body
      */
     @GetMapping("/ficheroes")
     @Timed
-    public List<Fichero> getAllFicheroes() {
-        log.debug("REST request to get all Ficheroes");
-        return ficheroService.findAll();
+    public ResponseEntity<List<Fichero>> getAllFicheroes(Pageable pageable) {
+        log.debug("REST request to get a page of Ficheroes");
+        Page<Fichero> page = ficheroRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/ficheroes");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -99,7 +107,7 @@ public class FicheroResource {
     @Timed
     public ResponseEntity<Fichero> getFichero(@PathVariable Long id) {
         log.debug("REST request to get Fichero : {}", id);
-        Optional<Fichero> fichero = ficheroService.findOne(id);
+        Optional<Fichero> fichero = ficheroRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(fichero);
     }
 
@@ -113,7 +121,8 @@ public class FicheroResource {
     @Timed
     public ResponseEntity<Void> deleteFichero(@PathVariable Long id) {
         log.debug("REST request to delete Fichero : {}", id);
-        ficheroService.delete(id);
+
+        ficheroRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

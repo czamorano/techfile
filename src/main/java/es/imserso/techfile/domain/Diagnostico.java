@@ -1,6 +1,5 @@
 package es.imserso.techfile.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -31,11 +28,6 @@ public class Diagnostico implements Serializable {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @ManyToMany(mappedBy = "diagnosticos")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Pensionista> pensionistas = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -56,31 +48,6 @@ public class Diagnostico implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Set<Pensionista> getPensionistas() {
-        return pensionistas;
-    }
-
-    public Diagnostico pensionistas(Set<Pensionista> pensionistas) {
-        this.pensionistas = pensionistas;
-        return this;
-    }
-
-    public Diagnostico addPensionista(Pensionista pensionista) {
-        this.pensionistas.add(pensionista);
-        pensionista.getDiagnosticos().add(this);
-        return this;
-    }
-
-    public Diagnostico removePensionista(Pensionista pensionista) {
-        this.pensionistas.remove(pensionista);
-        pensionista.getDiagnosticos().remove(this);
-        return this;
-    }
-
-    public void setPensionistas(Set<Pensionista> pensionistas) {
-        this.pensionistas = pensionistas;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

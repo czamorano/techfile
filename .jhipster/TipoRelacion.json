@@ -11,7 +11,7 @@
     ],
     "relationships": [],
     "changelogDate": "20180803034839",
-    "javadoc": "Task entity.\n@author The JHipster team.",
+    "javadoc": "Entidad TipoRelacion\n<p>\nRelación entre el pensionista y el perceptor\n\n@author czamorano",
     "entityTableName": "tipo_relacion",
     "dto": "no",
     "pagination": "no",
@@ -19,5 +19,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

@@ -3,19 +3,17 @@ package es.imserso.techfile.web.rest;
 import es.imserso.techfile.TechfileApp;
 
 import es.imserso.techfile.domain.Pensionista;
+import es.imserso.techfile.domain.Persona;
+import es.imserso.techfile.domain.Perceptor;
 import es.imserso.techfile.repository.PensionistaRepository;
-import es.imserso.techfile.service.PensionistaService;
 import es.imserso.techfile.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -28,14 +26,12 @@ import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 
 import static es.imserso.techfile.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -105,14 +101,7 @@ public class PensionistaResourceIntTest {
 
     @Autowired
     private PensionistaRepository pensionistaRepository;
-    @Mock
-    private PensionistaRepository pensionistaRepositoryMock;
-    
-    @Mock
-    private PensionistaService pensionistaServiceMock;
 
-    @Autowired
-    private PensionistaService pensionistaService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -133,7 +122,7 @@ public class PensionistaResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final PensionistaResource pensionistaResource = new PensionistaResource(pensionistaService);
+        final PensionistaResource pensionistaResource = new PensionistaResource(pensionistaRepository);
         this.restPensionistaMockMvc = MockMvcBuilders.standaloneSetup(pensionistaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -167,6 +156,16 @@ public class PensionistaResourceIntTest {
             .entidadBancaria(DEFAULT_ENTIDAD_BANCARIA)
             .cuentaBancaria(DEFAULT_CUENTA_BANCARIA)
             .numeroCuenta(DEFAULT_NUMERO_CUENTA);
+        // Add required entity
+        Persona persona = PersonaResourceIntTest.createEntity(em);
+        em.persist(persona);
+        em.flush();
+        pensionista.setPersona(persona);
+        // Add required entity
+        Perceptor perceptor = PerceptorResourceIntTest.createEntity(em);
+        em.persist(perceptor);
+        em.flush();
+        pensionista.setPerceptor(perceptor);
         return pensionista;
     }
 
@@ -260,36 +259,6 @@ public class PensionistaResourceIntTest {
             .andExpect(jsonPath("$.[*].numeroCuenta").value(hasItem(DEFAULT_NUMERO_CUENTA.toString())));
     }
     
-    public void getAllPensionistasWithEagerRelationshipsIsEnabled() throws Exception {
-        PensionistaResource pensionistaResource = new PensionistaResource(pensionistaServiceMock);
-        when(pensionistaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restPensionistaMockMvc = MockMvcBuilders.standaloneSetup(pensionistaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restPensionistaMockMvc.perform(get("/api/pensionistas?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(pensionistaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    public void getAllPensionistasWithEagerRelationshipsIsNotEnabled() throws Exception {
-        PensionistaResource pensionistaResource = new PensionistaResource(pensionistaServiceMock);
-            when(pensionistaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restPensionistaMockMvc = MockMvcBuilders.standaloneSetup(pensionistaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restPensionistaMockMvc.perform(get("/api/pensionistas?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(pensionistaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
 
     @Test
     @Transactional
@@ -333,7 +302,7 @@ public class PensionistaResourceIntTest {
     @Transactional
     public void updatePensionista() throws Exception {
         // Initialize the database
-        pensionistaService.save(pensionista);
+        pensionistaRepository.saveAndFlush(pensionista);
 
         int databaseSizeBeforeUpdate = pensionistaRepository.findAll().size();
 
@@ -412,7 +381,7 @@ public class PensionistaResourceIntTest {
     @Transactional
     public void deletePensionista() throws Exception {
         // Initialize the database
-        pensionistaService.save(pensionista);
+        pensionistaRepository.saveAndFlush(pensionista);
 
         int databaseSizeBeforeDelete = pensionistaRepository.findAll().size();
 

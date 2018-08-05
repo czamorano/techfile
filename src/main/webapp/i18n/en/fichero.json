@@ -23,10 +23,10 @@
             "encoding": "Encoding",
             "lineas": "Lineas",
             "ficheroByte": "Fichero Byte",
-            "pensionista": "Pensionista",
-            "mes": "Mes",
+            "proceso": "Proceso",
             "autonomia": "Autonomia",
-            "provincia": "Provincia"
+            "provincia": "Provincia",
+            "mes": "Mes"
         }
     }
 }

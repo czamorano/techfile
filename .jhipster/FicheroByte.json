@@ -11,10 +11,11 @@
     "changelogDate": "20180803034846",
     "entityTableName": "fichero_byte",
     "dto": "no",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

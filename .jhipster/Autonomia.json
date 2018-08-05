@@ -12,6 +12,7 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipValidateRules": "required",
             "relationshipName": "provincia",
             "otherEntityName": "provincia",
             "otherEntityRelationshipName": "autonomia"
@@ -21,9 +22,10 @@
     "entityTableName": "autonomia",
     "dto": "no",
     "pagination": "infinite-scroll",
-    "service": "serviceImpl",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

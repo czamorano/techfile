@@ -44,7 +44,6 @@ public class CacheConfiguration {
             cm.createCache(es.imserso.techfile.domain.Autonomia.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Autonomia.class.getName() + ".provincias", jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Provincia.class.getName(), jcacheConfiguration);
-            cm.createCache(es.imserso.techfile.domain.FicheroByte.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Mes.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.PensionConcurrente.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.TipoRelacion.class.getName(), jcacheConfiguration);
@@ -60,6 +59,7 @@ public class CacheConfiguration {
             cm.createCache(es.imserso.techfile.domain.Fichero.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Fichero.class.getName() + ".pensionistas", jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Fichero.class.getName() + ".mes", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.FicheroByte.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Discapacidad.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Discapacidad.class.getName() + ".pensionistas", jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Diagnostico.class.getName(), jcacheConfiguration);
@@ -67,6 +67,12 @@ public class CacheConfiguration {
             cm.createCache(es.imserso.techfile.domain.Etiologia.class.getName(), jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Etiologia.class.getName() + ".pensionistas", jcacheConfiguration);
             cm.createCache(es.imserso.techfile.domain.Usuario.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Fichero.class.getName() + ".procesos", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Cierre.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Proceso.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.Proceso.class.getName() + ".errorRegistros", jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.ErrorRegistro.class.getName(), jcacheConfiguration);
+            cm.createCache(es.imserso.techfile.domain.TipoError.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

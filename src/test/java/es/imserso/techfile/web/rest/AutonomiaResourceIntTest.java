@@ -3,8 +3,8 @@ package es.imserso.techfile.web.rest;
 import es.imserso.techfile.TechfileApp;
 
 import es.imserso.techfile.domain.Autonomia;
+import es.imserso.techfile.domain.Provincia;
 import es.imserso.techfile.repository.AutonomiaRepository;
-import es.imserso.techfile.service.AutonomiaService;
 import es.imserso.techfile.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -46,10 +46,6 @@ public class AutonomiaResourceIntTest {
     @Autowired
     private AutonomiaRepository autonomiaRepository;
 
-    
-
-    @Autowired
-    private AutonomiaService autonomiaService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -70,7 +66,7 @@ public class AutonomiaResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AutonomiaResource autonomiaResource = new AutonomiaResource(autonomiaService);
+        final AutonomiaResource autonomiaResource = new AutonomiaResource(autonomiaRepository);
         this.restAutonomiaMockMvc = MockMvcBuilders.standaloneSetup(autonomiaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -87,6 +83,11 @@ public class AutonomiaResourceIntTest {
     public static Autonomia createEntity(EntityManager em) {
         Autonomia autonomia = new Autonomia()
             .nombre(DEFAULT_NOMBRE);
+        // Add required entity
+        Provincia provincia = ProvinciaResourceIntTest.createEntity(em);
+        em.persist(provincia);
+        em.flush();
+        autonomia.getProvincias().add(provincia);
         return autonomia;
     }
 
@@ -190,7 +191,7 @@ public class AutonomiaResourceIntTest {
     @Transactional
     public void updateAutonomia() throws Exception {
         // Initialize the database
-        autonomiaService.save(autonomia);
+        autonomiaRepository.saveAndFlush(autonomia);
 
         int databaseSizeBeforeUpdate = autonomiaRepository.findAll().size();
 
@@ -235,7 +236,7 @@ public class AutonomiaResourceIntTest {
     @Transactional
     public void deleteAutonomia() throws Exception {
         // Initialize the database
-        autonomiaService.save(autonomia);
+        autonomiaRepository.saveAndFlush(autonomia);
 
         int databaseSizeBeforeDelete = autonomiaRepository.findAll().size();
 

@@ -49,14 +49,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "pensionista",
-            "otherEntityName": "pensionista",
-            "otherEntityRelationshipName": "fichero"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "mes",
-            "otherEntityName": "mes",
+            "relationshipName": "proceso",
+            "otherEntityName": "proceso",
             "otherEntityRelationshipName": "fichero"
         },
         {
@@ -70,15 +64,22 @@
             "relationshipName": "provincia",
             "otherEntityName": "provincia",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "mes",
+            "otherEntityName": "mes",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20180803034845",
     "entityTableName": "fichero",
     "dto": "no",
-    "pagination": "no",
-    "service": "serviceImpl",
+    "pagination": "pagination",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

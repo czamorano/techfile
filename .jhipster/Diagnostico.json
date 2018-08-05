@@ -9,22 +9,15 @@
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "relationshipName": "pensionista",
-            "otherEntityName": "pensionista",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "diagnostico"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180803034848",
     "entityTableName": "diagnostico",
     "dto": "no",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }

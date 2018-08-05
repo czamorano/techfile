@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -86,11 +87,13 @@ public class Pensionista implements Serializable {
     @Column(name = "numero_cuenta")
     private String numeroCuenta;
 
-    @OneToOne
+    @OneToOne(optional = false)
+    @NotNull
     @JoinColumn(unique = true)
     private Persona persona;
 
-    @OneToOne
+    @OneToOne(optional = false)
+    @NotNull
     @JoinColumn(unique = true)
     private Perceptor perceptor;
 
@@ -110,30 +113,21 @@ public class Pensionista implements Serializable {
     @JsonIgnoreProperties("")
     private TipoRelacion tipoRelacion;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "pensionista_discapacidad",
-               joinColumns = @JoinColumn(name = "pensionistas_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "discapacidads_id", referencedColumnName = "id"))
-    private Set<Discapacidad> discapacidads = new HashSet<>();
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "pensionista_diagnostico",
-               joinColumns = @JoinColumn(name = "pensionistas_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "diagnosticos_id", referencedColumnName = "id"))
-    private Set<Diagnostico> diagnosticos = new HashSet<>();
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "pensionista_etiologia",
-               joinColumns = @JoinColumn(name = "pensionistas_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "etiologias_id", referencedColumnName = "id"))
-    private Set<Etiologia> etiologias = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Fichero fichero;
 
     @ManyToOne
-    @JsonIgnoreProperties("pensionistas")
-    private Fichero fichero;
+    @JsonIgnoreProperties("")
+    private Discapacidad discapacidad;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Diagnostico diagnostico;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Etiologia etiologia;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -468,81 +462,6 @@ public class Pensionista implements Serializable {
         this.tipoRelacion = tipoRelacion;
     }
 
-    public Set<Discapacidad> getDiscapacidads() {
-        return discapacidads;
-    }
-
-    public Pensionista discapacidads(Set<Discapacidad> discapacidads) {
-        this.discapacidads = discapacidads;
-        return this;
-    }
-
-    public Pensionista addDiscapacidad(Discapacidad discapacidad) {
-        this.discapacidads.add(discapacidad);
-        discapacidad.getPensionistas().add(this);
-        return this;
-    }
-
-    public Pensionista removeDiscapacidad(Discapacidad discapacidad) {
-        this.discapacidads.remove(discapacidad);
-        discapacidad.getPensionistas().remove(this);
-        return this;
-    }
-
-    public void setDiscapacidads(Set<Discapacidad> discapacidads) {
-        this.discapacidads = discapacidads;
-    }
-
-    public Set<Diagnostico> getDiagnosticos() {
-        return diagnosticos;
-    }
-
-    public Pensionista diagnosticos(Set<Diagnostico> diagnosticos) {
-        this.diagnosticos = diagnosticos;
-        return this;
-    }
-
-    public Pensionista addDiagnostico(Diagnostico diagnostico) {
-        this.diagnosticos.add(diagnostico);
-        diagnostico.getPensionistas().add(this);
-        return this;
-    }
-
-    public Pensionista removeDiagnostico(Diagnostico diagnostico) {
-        this.diagnosticos.remove(diagnostico);
-        diagnostico.getPensionistas().remove(this);
-        return this;
-    }
-
-    public void setDiagnosticos(Set<Diagnostico> diagnosticos) {
-        this.diagnosticos = diagnosticos;
-    }
-
-    public Set<Etiologia> getEtiologias() {
-        return etiologias;
-    }
-
-    public Pensionista etiologias(Set<Etiologia> etiologias) {
-        this.etiologias = etiologias;
-        return this;
-    }
-
-    public Pensionista addEtiologia(Etiologia etiologia) {
-        this.etiologias.add(etiologia);
-        etiologia.getPensionistas().add(this);
-        return this;
-    }
-
-    public Pensionista removeEtiologia(Etiologia etiologia) {
-        this.etiologias.remove(etiologia);
-        etiologia.getPensionistas().remove(this);
-        return this;
-    }
-
-    public void setEtiologias(Set<Etiologia> etiologias) {
-        this.etiologias = etiologias;
-    }
-
     public Fichero getFichero() {
         return fichero;
     }
@@ -554,6 +473,45 @@ public class Pensionista implements Serializable {
 
     public void setFichero(Fichero fichero) {
         this.fichero = fichero;
+    }
+
+    public Discapacidad getDiscapacidad() {
+        return discapacidad;
+    }
+
+    public Pensionista discapacidad(Discapacidad discapacidad) {
+        this.discapacidad = discapacidad;
+        return this;
+    }
+
+    public void setDiscapacidad(Discapacidad discapacidad) {
+        this.discapacidad = discapacidad;
+    }
+
+    public Diagnostico getDiagnostico() {
+        return diagnostico;
+    }
+
+    public Pensionista diagnostico(Diagnostico diagnostico) {
+        this.diagnostico = diagnostico;
+        return this;
+    }
+
+    public void setDiagnostico(Diagnostico diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public Etiologia getEtiologia() {
+        return etiologia;
+    }
+
+    public Pensionista etiologia(Etiologia etiologia) {
+        this.etiologia = etiologia;
+        return this;
+    }
+
+    public void setEtiologia(Etiologia etiologia) {
+        this.etiologia = etiologia;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -1,18 +1,28 @@
 package es.imserso.techfile.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * A Fichero.
@@ -57,11 +67,7 @@ public class Fichero implements Serializable {
 
     @OneToMany(mappedBy = "fichero")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Pensionista> pensionistas = new HashSet<>();
-
-    @OneToMany(mappedBy = "fichero")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Mes> mes = new HashSet<>();
+    private Set<Proceso> procesos = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -70,6 +76,10 @@ public class Fichero implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("")
     private Provincia provincia;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+	private Mes mes;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -171,54 +181,29 @@ public class Fichero implements Serializable {
         this.ficheroByte = ficheroByte;
     }
 
-    public Set<Pensionista> getPensionistas() {
-        return pensionistas;
+    public Set<Proceso> getProcesos() {
+        return procesos;
     }
 
-    public Fichero pensionistas(Set<Pensionista> pensionistas) {
-        this.pensionistas = pensionistas;
+    public Fichero procesos(Set<Proceso> procesos) {
+        this.procesos = procesos;
         return this;
     }
 
-    public Fichero addPensionista(Pensionista pensionista) {
-        this.pensionistas.add(pensionista);
-        pensionista.setFichero(this);
+    public Fichero addProceso(Proceso proceso) {
+        this.procesos.add(proceso);
+        proceso.setFichero(this);
         return this;
     }
 
-    public Fichero removePensionista(Pensionista pensionista) {
-        this.pensionistas.remove(pensionista);
-        pensionista.setFichero(null);
+    public Fichero removeProceso(Proceso proceso) {
+        this.procesos.remove(proceso);
+        proceso.setFichero(null);
         return this;
     }
 
-    public void setPensionistas(Set<Pensionista> pensionistas) {
-        this.pensionistas = pensionistas;
-    }
-
-    public Set<Mes> getMes() {
-        return mes;
-    }
-
-    public Fichero mes(Set<Mes> mes) {
-        this.mes = mes;
-        return this;
-    }
-
-    public Fichero addMes(Mes mes) {
-        this.mes.add(mes);
-        mes.setFichero(this);
-        return this;
-    }
-
-    public Fichero removeMes(Mes mes) {
-        this.mes.remove(mes);
-        mes.setFichero(null);
-        return this;
-    }
-
-    public void setMes(Set<Mes> mes) {
-        this.mes = mes;
+    public void setProcesos(Set<Proceso> procesos) {
+        this.procesos = procesos;
     }
 
     public Autonomia getAutonomia() {
@@ -245,6 +230,19 @@ public class Fichero implements Serializable {
 
     public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
+    }
+
+    public Mes getMes() {
+        return mes;
+    }
+
+    public Fichero mes(Mes mes) {
+        this.mes = mes;
+        return this;
+    }
+
+    public void setMes(Mes mes) {
+        this.mes = mes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

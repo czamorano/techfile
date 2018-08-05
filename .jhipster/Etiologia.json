@@ -9,22 +9,15 @@
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "relationshipName": "pensionista",
-            "otherEntityName": "pensionista",
-            "ownerSide": false,
-            "otherEntityRelationshipName": "etiologia"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180803034849",
     "entityTableName": "etiologia",
     "dto": "no",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "angularJSSuffix": "ims"
 }
